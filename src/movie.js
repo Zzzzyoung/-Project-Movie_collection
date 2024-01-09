@@ -49,6 +49,20 @@ export function hideMovies() {
   document.body.style.backgroundColor = "gainsboro";
 }
 
+// alert 창 띄우는 함수
+// 이벤트 위임: 하위요소에서 발생한 이벤트를 상위요소에서 처리
+export function clickCard({ target, cardList }) {
+  // 카드 외 영역 클릭 시 무시
+  if (target === cardList) return;
+
+  if (target.matches(".movieCard")) {
+    alert(`영화 id: ${target.id}`);
+  } else {
+    // 카드의 자식 태그 (img, h3, p) 클릭 시 부모의 id로 접근
+    alert(`영화 id: ${target.parentNode.id}`);
+  }
+}
+
 // 영화 목록 보기 버튼 클릭 시 토글하는 함수
 export function openclose() {
   let cards = document.querySelectorAll(".movieCard");

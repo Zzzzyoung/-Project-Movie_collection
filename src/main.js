@@ -1,4 +1,4 @@
-import { movies, fetchMovies, makeMovieCards, hideMovies, openclose, scrollToTop } from "./movie.js";
+import { movies, fetchMovies, makeMovieCards, hideMovies, clickCard, openclose, scrollToTop } from "./movie.js";
 import { searchMovies } from "./search.js";
 
 // 페이지 로드 시 fetchMovies 함수 호출
@@ -6,21 +6,7 @@ document.addEventListener("DOMContentLoaded", fetchMovies);
 
 // id값 알려주는 alert 창 띄우기
 const cardList = document.querySelector("#movieCardList");
-
-cardList.addEventListener("click", clickCard);
-
-// 이벤트 위임: 하위요소에서 발생한 이벤트를 상위요소에서 처리
-function clickCard({ target }) {
-  // 카드 외 영역 클릭 시 무시
-  if (target === cardList) return;
-
-  if (target.matches(".movieCard")) {
-    alert(`영화 id: ${target.id}`);
-  } else {
-    // 카드의 자식 태그 (img, h3, p) 클릭 시 부모의 id로 접근
-    alert(`영화 id: ${target.parentNode.id}`);
-  }
-}
+cardList.addEventListener("click", (event) => clickCard({ target: event.target, cardList }));
 
 document.addEventListener("DOMContentLoaded", function () {
   const searchBtn = document.getElementById("searchBtn");
