@@ -1,4 +1,4 @@
-import { movies, fetchMovies, makeMovieCards, hideMovies, clickCard, openclose, scrollToTop } from "./movie.js";
+import { movies, fetchMovies, makeMovieCards, hideMovies, clickCard, toggleMovieList, scrollToTop } from "./movie.js";
 import { searchMovies } from "./search.js";
 
 // 페이지 로드 시 fetchMovies 함수 호출
@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
 // 페이지 새로고침 시 movieCard가 보이지 않는 것을 기본 값으로
 hideMovies();
 
-// 클릭 이벤트 발생 시 openclose 함수 호출
+// 클릭 이벤트 발생 시 toggleMovieList 함수 호출
 document.getElementById("togglehBtn").addEventListener("click", () => {
-  openclose();
+  toggleMovieList();
 });
 
 // 클릭 이벤트 발생 시 scrollToTop 함수 호출
